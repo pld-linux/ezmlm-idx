@@ -1,3 +1,7 @@
+# TODO
+#  - ezmlm-make puts to DIR/editor BuildRoot!
+#  - version 0.43 is out
+#
 %define	ezmlm_ver	0.53
 %define	idx_ver		0.40
 Summary:	ezmlm - high-speed mailing list manager for qmail
