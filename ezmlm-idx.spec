@@ -6,7 +6,7 @@ Name:		ezmlm-idx
 Version:	%{ezmlm_ver}_%{idx_ver}
 Release:	1
 Epoch:		1
-License:	DJB
+License:	DJB (base ezmlm), GPL (ezmlm-idx additions) - non distributable as a whole?
 Group:		Applications/System
 Source0:	http://cr.yp.to/software/ezmlm-%{ezmlm_ver}.tar.gz
 Source1:	http://gd.tuwien.ac.at/infosys/mail/qmail/ezmlm-patches/%{name}-%{idx_ver}.tar.gz
@@ -27,8 +27,7 @@ moderowanie, obs³uga wielu jêzyków, MIME, globalny-interfejs, prosta
 obs³uga.
 
 %prep
-%setup -q -T -b 0 -n ezmlm-%{ezmlm_ver}
-%setup -q -D -T -a 1 -n ezmlm-%{ezmlm_ver}
+%setup -q -n ezmlm-%{ezmlm_ver} -a1
 %patch0 -p1
 
 mv -f ezmlm-idx-%{idx_ver}/* .
