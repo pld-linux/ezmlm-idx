@@ -4,7 +4,7 @@ Name:		ezmlm-idx
 %define  IDX  0.40
 %define  EZMLM  0.53
 Version:	%{EZMLM}_%{IDX}
-Release:	2
+Release:	3
 Copyright:	Check with djb@koobera.math.uic.edu
 Group:		Utilities/System
 Group(pl):	Narzêdzia/System
@@ -12,6 +12,7 @@ Source0:	ftp://koobera.math.uic.edu/pub/software/ezmlm-0.53.tar.gz
 Source1:	ftp://ftp.id.wustl.edu/pub/patches/%{name}-0.40.tar.gz
 Source2:	ftp://ftp.id.wustl.edu/pub/patches/ezman/ezman-0.32.html.tar.gz
 Patch0:		%{name}-opt.patch
+Patch1:		%{name}-config.patch
 URL:		http://www.qmail.org/
 Requires:	qmail
 Conflicts:	ezmlm
@@ -41,6 +42,7 @@ mv -f Makefile.pld Makefile
 make
 make man
 if [ -z "$LANG" ]; then
+patch -s -p1 < %{PATCH1}
 make pl
 else
 make $LANG
@@ -52,11 +54,11 @@ rm -rf $RPM_BUILD_ROOT
 echo "$RPM_BUILD_ROOT%{_bindir}" > conf-bin
 echo "$RPM_BUILD_ROOT%{_mandir}" > conf-man
 
-install -d $RPM_BUILD_ROOT/etc
+install -d $RPM_BUILD_ROOT/etc/ezmlm
 install -d $RPM_BUILD_ROOT%{_bindir}
 install -d $RPM_BUILD_ROOT%{_mandir}/man{1,5}
 
-install ezmlmrc $RPM_BUILD_ROOT/etc
+install ezmlmrc $RPM_BUILD_ROOT/etc/ezmlm
 
 make setup
 
@@ -72,8 +74,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %doc BLURB CHANGES CHANGES.idx FAQ.idx  README README.idx 
 %doc SYSDEPS TARGETS UPGRADE.idx  DOWNGRADE.idx ezmlmrc 
-%doc ezmlmrc.*[a-zA-Z] ezman utils 
+%doc ezmlmrc.*[a-zA-Z] ezman 
 
+%attr(755,root,root) %dir /etc/ezmlm
 %attr(755,root,root) /usr/bin/ezmlm-*
 %attr(644,root,root) %{_mandir}/man[15]/*
-%attr(644,root,root) %config %verify(not size mtime md5) /etc/*
+%attr(644,root,root) %config %verify(not size mtime md5) /etc/ezmlm/*
