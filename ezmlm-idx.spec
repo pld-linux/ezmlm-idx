@@ -1,20 +1,20 @@
 %define	ezmlm_ver	0.53
 %define	idx_ver		0.40
-Summary:	ezmlm - high-speed mailing list manager for qmail.
-Summary(pl):	ezmlm - szybki zarz±dca list dyskysyjnych dla qmail'a.
+Summary:	ezmlm - high-speed mailing list manager for qmail
+Summary(pl):	ezmlm - szybki zarz±dca list dyskysyjnych dla qmaila
 Name:		ezmlm-idx
 Version:	%{ezmlm_ver}_%{idx_ver}
 Release:	1
 Epoch:		1
-License:	Check with djb@cr.yp.to
+License:	DJB
 Group:		Applications/System
 Source0:	http://cr.yp.to/software/ezmlm-%{ezmlm_ver}.tar.gz
 Source1:	http://gd.tuwien.ac.at/infosys/mail/qmail/ezmlm-patches/%{name}-%{idx_ver}.tar.gz
 Source2:	http://gd.tuwien.ac.at/infosys/mail/qmail/ezmlm-patches/ezman.html.tar.gz
 Patch0:		%{name}-opt.patch
 URL:		http://www.ezmlm.org/
-Obsoletes:	ezmlm
 BuildRequires:	groff
+Obsoletes:	ezmlm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
