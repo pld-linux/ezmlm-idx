@@ -1,14 +1,12 @@
 # TODO
-#  - ezmlm-make puts to DIR/editor BuildRoot!
 #  - version 0.43 is out
-#
 %define	ezmlm_ver	0.53
 %define	idx_ver		0.40
 Summary:	ezmlm - high-speed mailing list manager for qmail
 Summary(pl):	ezmlm - szybki zarz±dca list dyskysyjnych dla qmaila
 Name:		ezmlm-idx
 Version:	%{ezmlm_ver}_%{idx_ver}
-Release:	2
+Release:	2.2
 Epoch:		1
 License:	DJB (base ezmlm), GPL (ezmlm-idx additions) - non distributable as a whole?
 Group:		Applications/System
@@ -20,6 +18,7 @@ Source2:	http://gd.tuwien.ac.at/infosys/mail/qmail/ezmlm-patches/ezman.html.tar.
 # Source2-md5:	3ebdd5289f302063d21be43aaeef0585
 Patch0:		%{name}-opt.patch
 Patch1:		ezmlm-glibc.patch
+Patch2:		%{name}-DESTDIR.patch
 URL:		http://www.ezmlm.org/
 BuildRequires:	groff
 Obsoletes:	ezmlm
@@ -38,6 +37,7 @@ obs³uga.
 %setup -q -n ezmlm-%{ezmlm_ver} -a1
 %patch0 -p1
 %patch1
+%patch2 -p1
 
 mv -f ezmlm-idx-%{idx_ver}/* .
 cat idx.patch | sed 's/conf-bin`/conf-bin2`/g' > idx2.patch
@@ -57,8 +57,8 @@ tar zxf %{SOURCE2}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-echo "$RPM_BUILD_ROOT%{_bindir}" > conf-bin
-echo "$RPM_BUILD_ROOT%{_mandir}" > conf-man
+echo "%{_bindir}" > conf-bin
+echo "%{_mandir}" > conf-man
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/ezmlm
 install -d $RPM_BUILD_ROOT%{_bindir}
@@ -66,7 +66,8 @@ install -d $RPM_BUILD_ROOT%{_mandir}/man{1,5}
 
 install ezmlmrc $RPM_BUILD_ROOT%{_sysconfdir}/ezmlm
 
-%{__make} setup
+%{__make} setup \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
