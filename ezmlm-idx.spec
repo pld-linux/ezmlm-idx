@@ -19,12 +19,13 @@ Conflicts:	ezmlm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Qmail Mailing List Manager + Indexing, (Remote) Moderation, digest, make
-patches, multi-language, MIME, global-interface, easy-to-use.
+Qmail Mailing List Manager + Indexing, (Remote) Moderation, digest,
+make patches, multi-language, MIME, global-interface, easy-to-use.
 
 %description -l pl
-Qmailowy Mened¿er List Dyskusyjnych + Indeksowanie, (Zdalne) Moderowanie,
-obs³uga wielu jêzyków, MIME, globalny-interfejs, prosta obs³uga.
+Qmailowy Mened¿er List Dyskusyjnych + Indeksowanie, (Zdalne)
+Moderowanie, obs³uga wielu jêzyków, MIME, globalny-interfejs, prosta
+obs³uga.
 
 %prep
 %setup -q -T -b 0 -n ezmlm-%{EZMLM}
@@ -54,11 +55,11 @@ rm -rf $RPM_BUILD_ROOT
 echo "$RPM_BUILD_ROOT%{_bindir}" > conf-bin
 echo "$RPM_BUILD_ROOT%{_mandir}" > conf-man
 
-install -d $RPM_BUILD_ROOT/etc/ezmlm
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/ezmlm
 install -d $RPM_BUILD_ROOT%{_bindir}
 install -d $RPM_BUILD_ROOT%{_mandir}/man{1,5}
 
-install ezmlmrc $RPM_BUILD_ROOT/etc/ezmlm
+install ezmlmrc $RPM_BUILD_ROOT%{_sysconfdir}/ezmlm
 
 make setup
 
@@ -76,7 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc SYSDEPS TARGETS UPGRADE.idx  DOWNGRADE.idx ezmlmrc 
 %doc ezmlmrc.*[a-zA-Z] ezman 
 
-%attr(755,root,root) %dir /etc/ezmlm
-%attr(755,root,root) /usr/bin/ezmlm-*
+%attr(755,root,root) %dir %{_sysconfdir}/ezmlm
+%attr(755,root,root) %{_bindir}/ezmlm-*
 %attr(644,root,root) %{_mandir}/man[15]/*
-%attr(644,root,root) %config %verify(not size mtime md5) /etc/ezmlm/*
+%attr(644,root,root) %config %verify(not size mtime md5) %{_sysconfdir}/ezmlm/*
