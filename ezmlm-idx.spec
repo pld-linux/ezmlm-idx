@@ -1,14 +1,16 @@
 Summary:	ezmlm - high-speed mailing list manager for qmail.
 Summary(pl):	ezmlm - szybki mened¿er list dyskysyjnych dla qmail'a.
 Name:		ezmlm-idx
-Version:	0.53.322
+%define  IDX  0.40
+%define  EZMLM  0.53
+Version:	%{EZMLM}_%{IDX}
 Release:	1
 Copyright:	Check with djb@koobera.math.uic.edu
 Group:		Utilities/System
 Group(pl):	Narzêdzia/System
-Source0:	ftp://koobera.math.uic.edu/pub/software/ezmlm-0.53.tar.gz
-Source1:	ftp://ftp.id.wustl.edu/pub/patches/%{name}-0.322.tar.gz
-Source2:	ezman-0.32.html.tar.gz
+Source0:	ftp://koobera.math.uic.edu/pub/software/ezmlm-%{EZMLM}.tar.gz
+Source1:	ftp://ftp.id.wustl.edu/pub/patches/%{name}-%{IDX}.tar.gz
+Source2:	ftp://ftp.id.wustl.edu/pub/patches/ezman/ezman-0.32.html.tar.gz
 Patch0:		%{name}-opt.patch
 URL:		http://www.qmail.org/
 Requires:	qmail
@@ -24,11 +26,11 @@ Qmailowy Mened¿er List Dyskusyjnych + Indeksowanie, (Zdalne) Moderowanie,
 obs³uga wielu jêzyków, MIME, globalny-interfejs, prosta obs³uga.
 
 %prep
-%setup -q -T -b 0 -n ezmlm-0.53
-%setup -q -D -T -a 1 -n ezmlm-0.53
+%setup -q -T -b 0 -n ezmlm-%{EZMLM}
+%setup -q -D -T -a 1 -n ezmlm-%{EZMLM}
 %patch0 -p1
 
-mv -f ezmlm-idx-0.322/* .
+mv -f ezmlm-idx-%{IDX}/* .
 patch -s < idx.patch
 
 %build
