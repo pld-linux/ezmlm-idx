@@ -72,15 +72,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/bin/ezmlm-*
 %attr(644,root,root) %{_mandir}/man[15]/*
 %attr(644,root,root) %config %verify(not size mtime md5) /etc/*
-
-%changelog
-* Mon Jun 07 1999 Arkadiusz Mi¶kiewicz <misiek@pld.org.pl>
-- updated to x.313
-- added few macros
-- %config _must be_ 644 (if not - ezmlm-web won't work)
-- added ezmlm-idx.ezmlmrc.pl-fix.patch
-
-* Sat Oct 17 1998 Bartek Rozkrut <madey@dione.ids.pl>
-  [0.53.312-1d]
-- First relase as a PLD package,
-- added opt.patch prepared by Marcin Korzonek <mkorz@SHADOW.EU.ORG>.
