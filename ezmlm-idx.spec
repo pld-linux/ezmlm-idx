@@ -5,6 +5,7 @@ Summary(pl):	ezmlm - szybki mened¿er list dyskysyjnych dla qmail'a.
 Name:		ezmlm-idx
 Version:	%{ezmlm_ver}_%{idx_ver}
 Release:	1
+Epoch:		1
 License:	Check with djb@cr.yp.to
 Group:		Applications/System
 Source0:	http://cr.yp.to/software/ezmlm-%{ezmlm_ver}.tar.gz
