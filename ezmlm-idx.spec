@@ -1,15 +1,15 @@
 Summary:	ezmlm - high-speed mailing list manager for qmail.
 Summary(pl):	ezmlm - szybki mened¿er list dyskysyjnych dla qmail'a.
 Name:		ezmlm-idx
-%define  IDX  0.40
+%define  IDX  0.322
 %define  EZMLM  0.53
 Version:	%{EZMLM}_%{IDX}
-Release:	4
+Release:	2
 Copyright:	Check with djb@koobera.math.uic.edu
 Group:		Utilities/System
 Group(pl):	Narzêdzia/System
-Source0:	ftp://koobera.math.uic.edu/software/ezmlm-0.53.tar.gz
-Source1:	ftp://ftp.id.wustl.edu/pub/patches/%{name}-0.40.tar.gz
+Source0:	ftp://koobera.math.uic.edu/software/ezmlm-%{EZMLM}.tar.gz
+Source1:	ftp://ftp.id.wustl.edu/pub/patches/%{name}-%{IDX}.tar.gz
 Source2:	ftp://ftp.id.wustl.edu/pub/patches/ezman/ezman-0.32.html.tar.gz
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-config.patch
