@@ -65,8 +65,6 @@ install ezmlmrc $RPM_BUILD_ROOT%{_sysconfdir}/ezmlm
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man{1,5}/*
 
-strip $RPM_BUILD_ROOT%{_bindir}/ezmlm-* || :
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
