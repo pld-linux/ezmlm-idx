@@ -13,7 +13,7 @@ Patch0:		%{name}-opt.patch
 URL:		http://www.qmail.org/
 Requires:	qmail
 Conflicts:	ezmlm
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Qmail Mailing List Manager + Indexing, (Remote) Moderation, digest, make
@@ -45,7 +45,6 @@ tar zxf %{SOURCE2}
 rm -rf $RPM_BUILD_ROOT
 echo "$RPM_BUILD_ROOT%{_bindir}" > conf-bin
 echo "$RPM_BUILD_ROOT%{_mandir}" > conf-man
-
 
 install -d $RPM_BUILD_ROOT/etc
 install -d $RPM_BUILD_ROOT%{_bindir}
