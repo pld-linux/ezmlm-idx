@@ -1,12 +1,12 @@
 Summary:     ezmlm - high-speed mailing list manager for qmail.
 Name:        ezmlm-idx
-Version:     0.53.313
+Version:     0.53.322
 Release:     1
 Group:       Utilities/System
 Source:      ftp://koobera.math.uic.edu/pub/software/ezmlm-0.53.tar.gz
-Source1:     ftp://ftp.id.wustl.edu/pub/patches/%{name}-0.313.tar.gz
+Source1:     ftp://ftp.id.wustl.edu/pub/patches/%{name}-0.322.tar.gz
+Source2:     ezman-0.32.html.tar.gz
 Patch0:      %{name}-opt.patch
-Patch1:	     %{name}.ezmlmrc.pl-fix.patch
 URL:         http://www.qmail.org/
 Copyright:   Check with djb@koobera.math.uic.edu
 Requires:    qmail
@@ -26,35 +26,38 @@ obs³uga wielu jêzyków, MIME, globalny-interfejs, prosta obs³uga.
 %setup -q -T -b 0 -n ezmlm-0.53
 %setup -q -D -T -a 1 -n ezmlm-0.53
 %patch0 -p1
-%patch1 -p1
 
-mv -f ezmlm-idx-0.313/* .
+mv -f ezmlm-idx-0.322/* .
 patch -s < idx.patch
 
 %build
 make
 make man
+if [ -z "$LANG" ]; then
+make pl
+else
+make $LANG
+fi
+tar zxf %{SOURCE2}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+echo "$RPM_BUILD_ROOT%{_bindir}" > conf-bin
+echo "$RPM_BUILD_ROOT%{_mandir}" > conf-man
+
 
 install -d $RPM_BUILD_ROOT/etc
 install -d $RPM_BUILD_ROOT%{_bindir}
 install -d $RPM_BUILD_ROOT%{_mandir}/{man1,man5}
 
-install -s ezmlm-{clean,cron,gate,get,idx,issubn,list,make,\
-manage,moderate,reject,request,return,send,store,sub,tstdig,\
-unsub,warn,weed} $RPM_BUILD_ROOT%{_bindir}
-
-install ezmlm-{accept,both,check,glconf,glmake} $RPM_BUILD_ROOT%{_bindir}
-
-install *.1 $RPM_BUILD_ROOT%{_mandir}/man1
-install *.5 $RPM_BUILD_ROOT%{_mandir}/man5
-
 install ezmlmrc $RPM_BUILD_ROOT/etc
+
+make setup
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/*
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man5/*
+gzip -9nf ezman/*.html
+strip $RPM_BUILD_ROOT%{_bindir}/ezmlm-* || :
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -63,11 +66,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 
 %doc BLURB CHANGES CHANGES.idx FAQ.idx  README README.idx 
-%doc SYSDEPS TARGETS UPGRADE.idx  DOWNGRADE.idx ezmlmrc.sv 
-%doc ezmlmrc.da ezmlmrc.pl ezmlmrc.fr ezmlmrc.de ezmlmrc.jp 
-%doc ezmlmrc.pt_BR ezdomo.tar.gz ezdomo.pl.tar.gz
+%doc SYSDEPS TARGETS UPGRADE.idx  DOWNGRADE.idx ezmlmrc 
+%doc ezmlmrc.*[a-zA-Z] ezman utils 
 
-%attr(755,root,root) /usr/bin/*
+%attr(755,root,root) /usr/bin/ezmlm-*
 %attr(644,root,root) %{_mandir}/man[15]/*
 %attr(644,root,root) %config %verify(not size mtime md5) /etc/*
 
