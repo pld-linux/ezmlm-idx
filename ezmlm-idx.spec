@@ -20,7 +20,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Qmail Mailing List Manager + Indexing, (Remote) Moderation, digest,
-%{__make} patches, multi-language, MIME, global-interface, easy-to-use.
+make patches, multi-language, MIME, global-interface, easy-to-use.
 
 %description -l pl
 Qmailowy Mened¿er List Dyskusyjnych + Indeksowanie, (Zdalne)
@@ -40,7 +40,7 @@ cat Makefile | sed 's/auto_bin `head -1 conf-bin`/auto_bin `head -1 conf-bin2`/g
 mv -f Makefile.pld Makefile
 
 %build
-make
+%{__make}
 %{__make} man
 if [ -z "$LANG" ]; then
 patch -s -p1 < %{PATCH1}
