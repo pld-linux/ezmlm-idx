@@ -1,7 +1,7 @@
 %define	ezmlm_ver	0.53
 %define	idx_ver		0.40
 Summary:	ezmlm - high-speed mailing list manager for qmail.
-Summary(pl):	ezmlm - szybki mened¿er list dyskysyjnych dla qmail'a.
+Summary(pl):	ezmlm - szybki zarz±dca list dyskysyjnych dla qmail'a.
 Name:		ezmlm-idx
 Version:	%{ezmlm_ver}_%{idx_ver}
 Release:	1
@@ -18,12 +18,12 @@ BuildRequires:	groff
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Qmail Mailing List Manager + Indexing, (Remote) Moderation, digest,
+Qmail mailing list manager + indexing, (remote) moderation, digest,
 make patches, multi-language, MIME, global-interface, easy-to-use.
 
 %description -l pl
-Qmailowy Mened¿er List Dyskusyjnych + Indeksowanie, (Zdalne)
-Moderowanie, obs³uga wielu jêzyków, MIME, globalny-interfejs, prosta
+Qmailowy zarz±dca list dyskusyjnych + indeksowanie, (zdalne)
+moderowanie, obs³uga wielu jêzyków, MIME, globalny-interfejs, prosta
 obs³uga.
 
 %prep
