@@ -1,0 +1,8 @@
+diff -u ezmlm-0.53/ezmlmrc.pl ezmlm-0.53.gemma/ezmlmrc.pl
+--- ezmlm-0.53/ezmlmrc.pl	Sat Apr 29 17:53:36 2000
++++ ezmlm-0.53.gemma/ezmlmrc.pl	Sat Apr 29 17:53:51 2000
+@@ -1,3 +1,4 @@
++0.40 - This version identifier must be on line 1 and start in pos 1.
+ #$Id$
+ #$Name$
+ #
