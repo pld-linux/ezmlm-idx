@@ -1,20 +1,19 @@
+%define	ezmlm_ver	0.53
+%define	idx_ver		0.40
 Summary:	ezmlm - high-speed mailing list manager for qmail.
 Summary(pl):	ezmlm - szybki mened¿er list dyskysyjnych dla qmail'a.
 Name:		ezmlm-idx
-%define  IDX  0.322
-%define  EZMLM  0.53
-Version:	%{EZMLM}_%{IDX}
-Release:	2
-License:	Check with djb@koobera.math.uic.edu
+Version:	%{ezmlm_ver}_%{idx_ver}
+Release:	1
+License:	Check with djb@cr.yp.to
 Group:		Applications/System
-Source0:	ftp://koobera.math.uic.edu/software/ezmlm-%{EZMLM}.tar.gz
-Source1:	ftp://ftp.id.wustl.edu/pub/patches/%{name}-%{IDX}.tar.gz
-Source2:	ftp://ftp.id.wustl.edu/pub/patches/ezman/ezman-0.32.html.tar.gz
+Source0:	http://cr.yp.to/software/ezmlm-%{ezmlm_ver}.tar.gz
+Source1:	http://gd.tuwien.ac.at/infosys/mail/qmail/ezmlm-patches/%{name}-%{idx_ver}.tar.gz
+Source2:	http://gd.tuwien.ac.at/infosys/mail/qmail/ezmlm-patches/ezman.html.tar.gz
 Patch0:		%{name}-opt.patch
-Patch1:		%{name}-config.patch
-URL:		http://www.qmail.org/
-Requires:	qmail
-Conflicts:	ezmlm
+URL:		http://www.ezmlm.org/
+Obsoletes:	ezmlm
+BuildRequires:	groff
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -27,26 +26,24 @@ Moderowanie, obs³uga wielu jêzyków, MIME, globalny-interfejs, prosta
 obs³uga.
 
 %prep
-%setup -q -T -b 0 -n ezmlm-%{EZMLM}
-%setup -q -D -T -a 1 -n ezmlm-%{EZMLM}
+%setup -q -T -b 0 -n ezmlm-%{ezmlm_ver}
+%setup -q -D -T -a 1 -n ezmlm-%{ezmlm_ver}
 %patch0 -p1
 
-mv -f ezmlm-idx-%{IDX}/* .
+mv -f ezmlm-idx-%{idx_ver}/* .
 cat idx.patch | sed 's/conf-bin`/conf-bin2`/g' > idx2.patch
 patch -s < idx2.patch
 echo "%{_bindir}" > conf-bin2
 cat Makefile | sed 's/auto_bin `head -1 conf-bin`/auto_bin `head -1 conf-bin2`/g' > Makefile.pld
 mv -f Makefile.pld Makefile
 
+mv -f ezmlmrc.pl ezmlmrc.pl.org
+echo "%{idx_ver} - This must be on 1 and start in pos 1" > ezmlmrc.pl
+cat ezmlmrc.pl.org >> ezmlmrc.pl
+
 %build
 %{__make}
 %{__make} man
-if [ -z "$LANG" ]; then
-patch -s -p1 < %{PATCH1}
-%{__make} pl
-else
-%{__make} $LANG
-fi
 tar zxf %{SOURCE2}
 
 %install
