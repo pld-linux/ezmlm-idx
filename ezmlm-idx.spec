@@ -9,8 +9,11 @@ Epoch:		1
 License:	DJB (base ezmlm), GPL (ezmlm-idx additions) - non distributable as a whole?
 Group:		Applications/System
 Source0:	http://cr.yp.to/software/ezmlm-%{ezmlm_ver}.tar.gz
+# Source0-md5:	108c632caaa8cdbfd3041e6c449191b2
 Source1:	http://gd.tuwien.ac.at/infosys/mail/qmail/ezmlm-patches/%{name}-%{idx_ver}.tar.gz
+# Source1-md5:	c6137114060cff19301a956e73d46fc0
 Source2:	http://gd.tuwien.ac.at/infosys/mail/qmail/ezmlm-patches/ezman.html.tar.gz
+# Source2-md5:	3ebdd5289f302063d21be43aaeef0585
 Patch0:		%{name}-opt.patch
 Patch1:		ezmlm-glibc.patch
 URL:		http://www.ezmlm.org/
