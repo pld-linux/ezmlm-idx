@@ -5,9 +5,10 @@ Name:		ezmlm-idx
 %define  EZMLM  0.53
 Version:	%{EZMLM}_%{IDX}
 Release:	2
-Copyright:	Check with djb@koobera.math.uic.edu
-Group:		Utilities/System
-Group(pl):	Narzêdzia/System
+License:	Check with djb@koobera.math.uic.edu
+Group:		Applications/System
+Group(de):	Applikationen/System
+Group(pl):	Aplikacje/System
 Source0:	ftp://koobera.math.uic.edu/software/ezmlm-%{EZMLM}.tar.gz
 Source1:	ftp://ftp.id.wustl.edu/pub/patches/%{name}-%{IDX}.tar.gz
 Source2:	ftp://ftp.id.wustl.edu/pub/patches/ezman/ezman-0.32.html.tar.gz
@@ -62,8 +63,6 @@ install -d $RPM_BUILD_ROOT%{_mandir}/man{1,5}
 install ezmlmrc $RPM_BUILD_ROOT%{_sysconfdir}/ezmlm
 
 %{__make} setup
-
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man{1,5}/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
