@@ -20,7 +20,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Qmail Mailing List Manager + Indexing, (Remote) Moderation, digest,
-make patches, multi-language, MIME, global-interface, easy-to-use.
+%{__make} patches, multi-language, MIME, global-interface, easy-to-use.
 
 %description -l pl
 Qmailowy Mened¿er List Dyskusyjnych + Indeksowanie, (Zdalne)
@@ -41,12 +41,12 @@ mv -f Makefile.pld Makefile
 
 %build
 make
-make man
+%{__make} man
 if [ -z "$LANG" ]; then
 patch -s -p1 < %{PATCH1}
-make pl
+%{__make} pl
 else
-make $LANG
+%{__make} $LANG
 fi
 tar zxf %{SOURCE2}
 
@@ -61,7 +61,7 @@ install -d $RPM_BUILD_ROOT%{_mandir}/man{1,5}
 
 install ezmlmrc $RPM_BUILD_ROOT%{_sysconfdir}/ezmlm
 
-make setup
+%{__make} setup
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man{1,5}/*
 
