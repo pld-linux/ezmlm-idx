@@ -1,0 +1,13 @@
+--- ezmlm-0.53.orig/Makefile	2004-12-15 03:21:45.000000000 +0200
++++ ezmlm-0.53/Makefile	2004-12-15 03:01:41.000000000 +0200
+@@ -1167,8 +1167,8 @@
+ 
+ setup: \
+ it man install conf-bin conf-man
+-	./install "`head -1 conf-bin`" < BIN
+-	./install "`head -1 conf-man`" < MAN
++	./install "$(DESTDIR)/`head -1 conf-bin`" < BIN
++	./install "$(DESTDIR)/`head -1 conf-man`" < MAN
+ 
+ sgetopt.0: \
+ sgetopt.3
