@@ -1,18 +1,19 @@
-Summary:     ezmlm - high-speed mailing list manager for qmail.
-Name:        ezmlm-idx
-Version:     0.53.322
-Release:     1
-Group:       Utilities/System
-Source:      ftp://koobera.math.uic.edu/pub/software/ezmlm-0.53.tar.gz
-Source1:     ftp://ftp.id.wustl.edu/pub/patches/%{name}-0.322.tar.gz
-Source2:     ezman-0.32.html.tar.gz
-Patch0:      %{name}-opt.patch
-URL:         http://www.qmail.org/
-Copyright:   Check with djb@koobera.math.uic.edu
-Requires:    qmail
-Conflicts:   ezmlm
-Buildroot:   /tmp/%{name}-%{version}-root
-Summary(pl): ezmlm - szybki mened¿er list dyskysyjnych dla qmail'a.
+Summary:	ezmlm - high-speed mailing list manager for qmail.
+Summary(pl):	ezmlm - szybki mened¿er list dyskysyjnych dla qmail'a.
+Name:		ezmlm-idx
+Version:	0.53.322
+Release:	1
+Copyright:	Check with djb@koobera.math.uic.edu
+Group:		Utilities/System
+Group(pl):	Narzêdzia/System
+Source0:	ftp://koobera.math.uic.edu/pub/software/ezmlm-0.53.tar.gz
+Source1:	ftp://ftp.id.wustl.edu/pub/patches/%{name}-0.322.tar.gz
+Source2:	ezman-0.32.html.tar.gz
+Patch0:		%{name}-opt.patch
+URL:		http://www.qmail.org/
+Requires:	qmail
+Conflicts:	ezmlm
+Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
 Qmail Mailing List Manager + Indexing, (Remote) Moderation, digest, make
@@ -48,15 +49,14 @@ echo "$RPM_BUILD_ROOT%{_mandir}" > conf-man
 
 install -d $RPM_BUILD_ROOT/etc
 install -d $RPM_BUILD_ROOT%{_bindir}
-install -d $RPM_BUILD_ROOT%{_mandir}/{man1,man5}
+install -d $RPM_BUILD_ROOT%{_mandir}/man{1,5}
 
 install ezmlmrc $RPM_BUILD_ROOT/etc
 
 make setup
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/*
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man5/*
-gzip -9nf ezman/*.html
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man{1,5}/*
+
 strip $RPM_BUILD_ROOT%{_bindir}/ezmlm-* || :
 
 %clean
@@ -81,6 +81,6 @@ rm -rf $RPM_BUILD_ROOT
 - added ezmlm-idx.ezmlmrc.pl-fix.patch
 
 * Sat Oct 17 1998 Bartek Rozkrut <madey@dione.ids.pl>
-[0.53.312-1d]
+  [0.53.312-1d]
 - First relase as a PLD package,
 - added opt.patch prepared by Marcin Korzonek <mkorz@SHADOW.EU.ORG>.
