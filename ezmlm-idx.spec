@@ -4,11 +4,11 @@ Name:		ezmlm-idx
 %define  IDX  0.40
 %define  EZMLM  0.53
 Version:	%{EZMLM}_%{IDX}
-Release:	3
+Release:	4
 Copyright:	Check with djb@koobera.math.uic.edu
 Group:		Utilities/System
 Group(pl):	Narzêdzia/System
-Source0:	ftp://koobera.math.uic.edu/pub/software/ezmlm-0.53.tar.gz
+Source0:	ftp://koobera.math.uic.edu/software/ezmlm-0.53.tar.gz
 Source1:	ftp://ftp.id.wustl.edu/pub/patches/%{name}-0.40.tar.gz
 Source2:	ftp://ftp.id.wustl.edu/pub/patches/ezman/ezman-0.32.html.tar.gz
 Patch0:		%{name}-opt.patch
