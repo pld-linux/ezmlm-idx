@@ -39,7 +39,7 @@ mv -f ezmlm-idx-%{idx_ver}/* .
 cat idx.patch | sed 's/conf-bin`/conf-bin2`/g' > idx2.patch
 patch -s < idx2.patch
 echo "%{_bindir}" > conf-bin2
-cat Makefile | sed 's/auto_bin `head -1 conf-bin`/auto_bin `head -1 conf-bin2`/g' > Makefile.pld
+cat Makefile | sed 's/auto_bin `head -n 1 conf-bin`/auto_bin `head -n 1 conf-bin2`/g' > Makefile.pld
 mv -f Makefile.pld Makefile
 
 mv -f ezmlmrc.pl ezmlmrc.pl.org
