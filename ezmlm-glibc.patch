@@ -1,0 +1,8 @@
+--- error.h~	Mon Mar 31 13:25:22 2003
++++ error.h	Mon Mar 31 13:26:22 2003
+@@ -1,3 +1,5 @@
++#include <errno.h>
++
+ #ifndef ERROR_H
+ #define ERROR_H
+ 
