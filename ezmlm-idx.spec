@@ -4,12 +4,12 @@ Name:		ezmlm-idx
 %define  IDX  0.40
 %define  EZMLM  0.53
 Version:	%{EZMLM}_%{IDX}
-Release:	1
+Release:	2
 Copyright:	Check with djb@koobera.math.uic.edu
 Group:		Utilities/System
 Group(pl):	Narzêdzia/System
-Source0:	ftp://koobera.math.uic.edu/pub/software/ezmlm-%{EZMLM}.tar.gz
-Source1:	ftp://ftp.id.wustl.edu/pub/patches/%{name}-%{IDX}.tar.gz
+Source0:	ftp://koobera.math.uic.edu/pub/software/ezmlm-0.53.tar.gz
+Source1:	ftp://ftp.id.wustl.edu/pub/patches/%{name}-0.40.tar.gz
 Source2:	ftp://ftp.id.wustl.edu/pub/patches/ezman/ezman-0.32.html.tar.gz
 Patch0:		%{name}-opt.patch
 URL:		http://www.qmail.org/
@@ -31,7 +31,11 @@ obs³uga wielu jêzyków, MIME, globalny-interfejs, prosta obs³uga.
 %patch0 -p1
 
 mv -f ezmlm-idx-%{IDX}/* .
-patch -s < idx.patch
+cat idx.patch | sed 's/conf-bin`/conf-bin2`/g' > idx2.patch
+patch -s < idx2.patch
+echo "%{_bindir}" > conf-bin2
+cat Makefile | sed 's/auto_bin `head -1 conf-bin`/auto_bin `head -1 conf-bin2`/g' > Makefile.pld
+mv -f Makefile.pld Makefile
 
 %build
 make
