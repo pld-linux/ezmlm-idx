@@ -1,0 +1,25 @@
+diff -ruN ezmlm-0.53./conf-bin ezmlm-0.53/conf-bin
+--- ezmlm-0.53./conf-bin	Mon Jun 30 05:11:54 1997
++++ ezmlm-0.53/conf-bin	Sat Nov  7 21:59:54 1998
+@@ -1,3 +1,3 @@
+-/usr/local/bin/ezmlm
++/usr/bin
+ 
+ Programs will be installed in this directory.
+diff -ruN ezmlm-0.53./conf-cc ezmlm-0.53/conf-cc
+--- ezmlm-0.53./conf-cc	Mon Jun 30 05:11:54 1997
++++ ezmlm-0.53/conf-cc	Sat Nov  7 22:02:01 1998
+@@ -1,3 +1,3 @@
+-cc -O2
++cc $RPM_OPT_FLAGS
+ 
+ This will be used to compile .c files.
+diff -ruN ezmlm-0.53./conf-man ezmlm-0.53/conf-man
+--- ezmlm-0.53./conf-man	Mon Jun 30 05:11:54 1997
++++ ezmlm-0.53/conf-man	Sat Nov  7 21:59:44 1998
+@@ -1,4 +1,4 @@
+-/usr/local/man
++/usr/man
+ 
+ Man pages will be installed in subdirectories of this directory. An
+ unformatted man page foo.1 will go into .../man1/foo.1; a formatted man
