@@ -4,7 +4,7 @@ Summary:	ezmlm - high-speed mailing list manager for qmail
 Summary(pl):	ezmlm - szybki zarz±dca list dyskysyjnych dla qmaila
 Name:		ezmlm-idx
 Version:	%{ezmlm_ver}_%{idx_ver}
-Release:	2	
+Release:	2
 Epoch:		1
 License:	DJB (base ezmlm), GPL (ezmlm-idx additions) - non distributable as a whole?
 Group:		Applications/System
