@@ -7,8 +7,6 @@ Version:	%{EZMLM}_%{IDX}
 Release:	2
 License:	Check with djb@koobera.math.uic.edu
 Group:		Applications/System
-Group(de):	Applikationen/System
-Group(pl):	Aplikacje/System
 Source0:	ftp://koobera.math.uic.edu/software/ezmlm-%{EZMLM}.tar.gz
 Source1:	ftp://ftp.id.wustl.edu/pub/patches/%{name}-%{IDX}.tar.gz
 Source2:	ftp://ftp.id.wustl.edu/pub/patches/ezman/ezman-0.32.html.tar.gz
