@@ -68,9 +68,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 
-%doc BLURB CHANGES CHANGES.idx FAQ.idx  README README.idx 
-%doc SYSDEPS TARGETS UPGRADE.idx  DOWNGRADE.idx ezmlmrc 
-%doc ezmlmrc.*[a-zA-Z] ezman 
+%doc BLURB CHANGES CHANGES.idx FAQ.idx  README README.idx
+%doc SYSDEPS TARGETS UPGRADE.idx  DOWNGRADE.idx ezmlmrc
+%doc ezmlmrc.*[a-zA-Z] ezman
 
 %attr(755,root,root) %dir %{_sysconfdir}/ezmlm
 %attr(755,root,root) %{_bindir}/ezmlm-*
