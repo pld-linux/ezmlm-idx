@@ -82,4 +82,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %dir %{_sysconfdir}/ezmlm
 %attr(755,root,root) %{_bindir}/ezmlm-*
 %attr(644,root,root) %{_mandir}/man[15]/*
-%attr(644,root,root) %config %verify(not size mtime md5) %{_sysconfdir}/ezmlm/*
+%attr(644,root,root) %config %verify(not md5 mtime size) %{_sysconfdir}/ezmlm/*
