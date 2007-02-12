@@ -3,7 +3,7 @@
 %define	ezmlm_ver	0.53
 %define	idx_ver		0.40
 Summary:	ezmlm - high-speed mailing list manager for qmail
-Summary(pl.UTF-8):   ezmlm - szybki zarządca list dyskysyjnych dla qmaila
+Summary(pl.UTF-8):	ezmlm - szybki zarządca list dyskysyjnych dla qmaila
 Name:		ezmlm-idx
 Version:	%{ezmlm_ver}_%{idx_ver}
 Release:	2.2
