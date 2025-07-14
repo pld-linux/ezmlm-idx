@@ -35,9 +35,9 @@ obsługa.
 
 %prep
 %setup -q -n ezmlm-%{ezmlm_ver} -a1
-%patch0 -p1
-%patch1
-%patch2 -p1
+%patch -P0 -p1
+%patch -P1
+%patch -P2 -p1
 
 mv -f ezmlm-idx-%{idx_ver}/* .
 cat idx.patch | sed 's/conf-bin`/conf-bin2`/g' > idx2.patch
